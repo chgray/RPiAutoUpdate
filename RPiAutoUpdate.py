@@ -28,12 +28,6 @@ sleep(1)
 fixedLed.value(0)
 
 
-# class CoffeeSerialServer(object):
-#     def __init__(self, uartNum, txPin, rxPin):
-#         uart = UART(uartNum, baudrate=115200, tx=Pin(txPin), rx=Pin(rxPin))
-#         uart.irq(UART.RX_ANY, priority=1, handler=None, wake=machine.IDLE)
-
-#     def callback
 
 def callback(data):
     print("INTERRUPT")
@@ -80,7 +74,7 @@ def pokeWatchDogTimer(t):
 #
 # Read update file
 #
-class CoffeeUpdater(object):
+class RPiAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
         self.downloader = downloader
@@ -172,9 +166,9 @@ class ChecksumContent(object):
     def Hash(self):
         return self.hexHash
 
-class CoffeeFileDownloader(object):
+class RPiAutoUpdateFileDownloader(object):
     def __init__(self):
-        print("   FILE: OpenCoffee Downloader Initialized")
+        print("   FILE: OpenRPiAutoUpdate Downloader Initialized")
 
     def LoadFile(self, location):
         #print("Getting %s from FILESYSTEM" % location)
@@ -196,10 +190,10 @@ class CoffeeFileDownloader(object):
             ret = ChecksumContent(f.read())
             return ret
 
-class CoffeeFileDownloaderWifi(CoffeeFileDownloader):
+class RPiAutoUpdateFileDownloaderWifi(RPiAutoUpdateFileDownloader):
     def __init__(self):
         super().__init__()
-        print("   WIFI: OpenCoffee Downloader Initialized")
+        print("   WIFI: OpenRPiAutoUpdate Downloader Initialized")
 
         self.wlan = network.WLAN(network.STA_IF)
         self.wlan.active(False)
@@ -253,13 +247,13 @@ class CoffeeFileDownloaderWifi(CoffeeFileDownloader):
 try:
     if hasattr(network, "WLAN"):
         print("WIFI")
-        downloader = CoffeeFileDownloaderWifi()
+        downloader = RPiAutoUpdateFileDownloaderWifi()
         downloader.Connect()
     else:
         print("NOT WIFI DEVICE!!!! - EXITING")
         exit(1)
 
-    cu = CoffeeUpdater(downloader)
+    cu = RPiAutoUpdateUpdater(downloader)
     cu.Update()
 
 except OSError as e:
