@@ -80,26 +80,29 @@ class RPiAutoUpdateUpdater(object):
         self.downloader = downloader
 
     def Update(self):
+        print("")
+        print("")
+        print("Downloading Defice Function Config : ----------------------------")
         creds = WifiCreds()
         print("UPDATER: Device Update URL: %s" % creds.DeviceFunction())
 
         # Retrieve our high water config file
         targetConfig = self.downloader.LoadContent(creds.DeviceFunction())
-        targetConfigJson = ujson.load(io.StringIO(targetConfig.Content()))
+        print("UPDATER: Downloaded config file %s" % targetConfig.Content())
 
-        print(targetConfig.Content())
+        targetConfigJson = ujson.load(io.StringIO(targetConfig.Content()))
 
         print("UPDATER: Device Function : %s" % targetConfigJson["DeviceFunction"])
 
         print("")
         print("")
-        print("Required Files: -------------------------------------------------------")
+        print("Required Files: -------------------------------------------------")
         for key, value in enumerate(targetConfigJson['Files']):
             print ("    * %s with hash %s" % (value["FileName"], value["Hash"]))
 
         print("")
         print("")
-        print("Updating Files: -------------------------------------------------------")
+        print("Updating Files: -------------------------------------------------")
         for key, value in enumerate(targetConfigJson['Files']):
             print ("    Checking %s for updates" % value["FileName"])
             try:
@@ -283,4 +286,4 @@ except Exception as e:
 
 print("Loading Main Program")
 updatedMain = RPiAutoUpdate_main()
-updatedMain.Main();
+updatedMain.Main()
