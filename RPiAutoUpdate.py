@@ -116,7 +116,14 @@ class RPiAutoUpdateUpdater(object):
                     else:
                         print("    * File (%s) DOES EXIST locally, hashs the same - no update required)" % (localFile))
 
+
+                #
+                # If we need to update, download the file and write it to the filesystem
+                #    if the remote hash doesnt match our calculated hash, then we have a problem, skip the file
+                #
                 if needUpdate:
+                    print("")
+                    print("    * Downloading remote file (%s)" % value["FileName"])
                     content = self.downloader.LoadContent(value["URL"])
 
                     if content.Hash() == value["Hash"]:
@@ -125,21 +132,23 @@ class RPiAutoUpdateUpdater(object):
                         print ("    * CORRUPTED FILE HASH expected=%s vs. actual=%s" % (content.Hash(), value["Hash"]))
                         needUpdate = False
 
+                #
+                # If we're here, we have the updated file in memory, write it to disk
+                #
                 if needUpdate:
-                    print("")
-                    print("    Performing Update...")
-                    with open(value["FileName"] + ".temp", "wb") as    FILE:
-                        print("    Writing temp file")
+                    print("    * Writing file to disk as %s.temp" % value["FileName"])
+
+                    with open(value["FileName"] + ".temp", "wb") as file:
                         file.write(content.Content())
 
                     if localFile != None:
-                        print("   Removing original file")
+                        print("    * Deleting file, if it exists")
                         os.remove(value["FileName"])
 
-                    print("    Perform rename")
+                    print("    * Perform rename %s -> %s" % (value["FileName"] + ".temp", value["FileName"]))
                     os.rename(value["FileName"] + ".temp", value["FileName"])
 
-                    print("    SUCCESS: %s updated!" % value["FileName"])
+                    print("    * SUCCESS: %s updated!" % value["FileName"])
 
 
             except OSError as e:
@@ -271,8 +280,7 @@ except Exception as e:
     print("EXCEPTION() - reseting!")
     machine.reset()
 
-print("Blinking LEDs for a bit")
-sleep(1)
-print("Bye!! - xyz")
-sleep(5)
-machine.reset()
+
+print("Loading Main Program")
+updatedMain = RPiAutoUpdate_main()
+updatedMain.Main();

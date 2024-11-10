@@ -1,17 +1,22 @@
 from machine import Pin, Timer
 from time import sleep
 
-print("Just Blink Example")
+class RPiAutoUpdate_main:
 
-led = Pin("LED", Pin.OUT)
-timer = Timer()
+    def __init__(self):
+        print("JustBlink Initing!")
 
-def blink(timer):
-    print("Timer Tick")
-    led.toggle()
+    def Main(self):
+        print("JustBlink Main!")
+        led = Pin("LED", Pin.OUT)
+        timer = Timer()
 
-timer.init(freq=10, mode=Timer.PERIODIC, callback=blink)
+        def blink(timer):
+            print("Timer Tick")
+            led.toggle()
 
-print("bye")
-sleep(60)
-print("done")
+        timer.init(freq=10, mode=Timer.PERIODIC, callback=blink)
+
+        print("bye")
+        sleep(60)
+        print("done")
