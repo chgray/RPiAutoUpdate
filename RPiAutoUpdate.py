@@ -56,6 +56,9 @@ class RPiAutoUpdateUpdater(object):
         targetConfig = self.downloader.LoadContent(creds.DeviceFunction())
         print("UPDATER: Downloaded config file %s" % targetConfig.Content())
 
+        with open("DeviceFunction.json", "wb") as file:
+            file.write(targetConfig.Content())
+
         targetConfigJson = ujson.load(io.StringIO(targetConfig.Content()))
 
         print("UPDATER: Device Function : %s" % targetConfigJson["DeviceFunction"])
@@ -161,8 +164,6 @@ class RPiAutoUpdateFileDownloader(object):
         print("   FILE: RPiAutoUpdate Downloader Initialized")
 
     def LoadFile(self, location):
-        print("Getting %s from FILESYSTEM" % location)
-
         if fileExists(location) == False:
             return None
 
