@@ -285,5 +285,7 @@ except Exception as e:
 
 
 print("Loading Main Program")
+from RPiAutoUpdate_main import *
 updatedMain = RPiAutoUpdate_main()
+print("Loading Main Program")
 updatedMain.Main()
