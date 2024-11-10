@@ -42,7 +42,7 @@ def fileExists(path):
 class RPiAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
-        print("   UPDATER: RPiAutoUpdate Updater Version 3.3")
+        print("   UPDATER: RPiAutoUpdate Updater Version 3.4")
         self.downloader = downloader
 
     def Update(self):
@@ -76,8 +76,11 @@ class RPiAutoUpdateUpdater(object):
                 needUpdate = False
 
                 if localFile == None:
-                    print("    * File (%s) DOES NOT EXIST in local filesystem;  forcing update" % value["FileName"])
-                    needUpdate = True
+                    if value["Operation"] == "Delete":
+                        print("    * File (%s) DOES NOT EXIST, but was marked for deletion" % value["FileName"])
+                    else:
+                        print("    * File (%s) DOES NOT EXIST in local filesystem;  forcing update" % value["FileName"])
+                        needUpdate = True
                 else:
 
                     if value["Operation"] == "Delete":

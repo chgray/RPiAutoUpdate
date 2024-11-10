@@ -1,12 +1,12 @@
 {
-    "Version": 19,
+    "Version": 20,
     "DeviceFunction": "https://raw.githubusercontent.com/chgray/OpenCoffee/user/chgray/se2/WifiRelay.json",
     "Files": [
         {
             "URL": "https://raw.githubusercontent.com/chgray/RPiAutoUpdate/refs/heads/user/chgray/iterating/RPiAutoUpdate.py",
             "FileName": "RPiAutoUpdate.py",
             "Operation": "Update",
-            "Hash": "1208a2cf0ba071e3b5f7da2f880ba02e963bc6f4207c22a250c4b103cee21c15"
+            "Hash": "790424e652e6ee76254dfe070e6f1234e9fa353bbf0f55ecc034bf1783e81e28"
         },
         {
             "URL": "https://raw.githubusercontent.com/chgray/RPiAutoUpdate/refs/heads/user/chgray/iterating/RPIAutoUpdate_Main.py",
