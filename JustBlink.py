@@ -5,7 +5,7 @@ from time import sleep
 class RPiAutoUpdate_application:
 
     def __init__(self):
-        print("JustBlink Initing! Version 0.1.0")
+        print("JustBlink Initing! Version 0")
 
     def Main(self):
         print("JustBlink Main!")
