@@ -1,6 +1,7 @@
 from machine import Pin, Timer
 from time import sleep
 
+
 class RPiAutoUpdate_main:
 
     def __init__(self):
@@ -18,5 +19,5 @@ class RPiAutoUpdate_main:
         timer.init(freq=10, mode=Timer.PERIODIC, callback=blink)
 
         print("bye")
-        sleep(60)
+        sleep(20)
         print("done")

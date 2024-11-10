@@ -6,6 +6,8 @@ print("   1. follow instructions for wifi credentials and default configuration"
 print("   2. copy this file as main.py' -- eg: ampy put RPiAutoUpdate_Main.py main.py")
 
 
+input_character = stdin.read(1)
+
 #
 # On PicoW init wifi
 #
