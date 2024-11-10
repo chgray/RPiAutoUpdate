@@ -1,5 +1,5 @@
 {
-  "Version":9,
+  "Version":10,
   "DeviceFunction":"https://raw.githubusercontent.com/chgray/OpenCoffee/user/chgray/se2/WifiRelay.json",
   "Files":[
     {
@@ -10,7 +10,7 @@
     {
       "URL":"https://raw.githubusercontent.com/chgray/RPiAutoUpdate/refs/heads/user/chgray/iterating/JustBlink.py",
       "FileName":"RPiAutoUpdate_application.py",
-      "Hash":"b202973101ff70c59b199d548f1cd5a35252dd27dee4336e6245b04138f47c00"
+      "Hash":"da570bb3dc9866c497aaff0120d357b3686af10e8800f82904b30aed6e9407c3"
     }
   ]
 }
