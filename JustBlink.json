@@ -9,8 +9,8 @@
     },
     {
       "URL":"https://raw.githubusercontent.com/chgray/RPiAutoUpdate/refs/heads/user/chgray/iterating/JustBlink.py",
-      "FileName":"RPiAutoUpdate_main.py",
-      "Hash":"ffcd558b513ff3a937065ce5ad15c7a453b6d3f439556d0206bf9301fac01e79"
+      "FileName":"RPiAutoUpdate_application.py",
+      "Hash":"b202973101ff70c59b199d548f1cd5a35252dd27dee4336e6245b04138f47c00"
     }
   ]
 }

@@ -40,7 +40,7 @@ except Exception as e:
 
 
 print("Loading Main Program")
-from RPiAutoUpdate_main import *
-updatedMain = RPiAutoUpdate_main()
+from RPiAutoUpdate_application import *
+updatedMain = RPiAutoUpdate_application()
 print("Loading Main Program")
 updatedMain.Main()
