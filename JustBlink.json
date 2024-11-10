@@ -1,17 +1,18 @@
 {
-  "Version":12,
-  "DeviceFunction":"https://raw.githubusercontent.com/chgray/OpenCoffee/user/chgray/se2/WifiRelay.json",
-  "Files":[
-    {
-        "URL":"https://raw.githubusercontent.com/chgray/RPiAutoUpdate/refs/heads/user/chgray/iterating/RPiAutoUpdate.py",
-        "FileName":"RPiAutoUpdate.py",
-        "Update":"Update",
-        "Hash":"ec3edac681ca515f0b5c3636f579aaf22f86a84b498702b742699c5117420b45"
-    },
-    {
-      "URL":"https://raw.githubusercontent.com/chgray/RPiAutoUpdate/refs/heads/user/chgray/iterating/JustBlink.py",
-      "FileName":"RPiAutoUpdate_application.py",
-      "Operation":"Delete"
-    }
-  ]
+    "Version": 13,
+    "DeviceFunction": "https://raw.githubusercontent.com/chgray/OpenCoffee/user/chgray/se2/WifiRelay.json",
+    "Files": [
+        {
+            "URL": "https://raw.githubusercontent.com/chgray/RPiAutoUpdate/refs/heads/user/chgray/iterating/RPiAutoUpdate.py",
+            "FileName": "RPiAutoUpdate.py",
+            "Update": "Update",
+            "Hash": "ec3edac681ca515f0b5c3636f579aaf22f86a84b498702b742699c5117420b45"
+        },
+        {
+            "URL": "https://raw.githubusercontent.com/chgray/RPiAutoUpdate/refs/heads/user/chgray/iterating/JustBlink.py",
+            "FileName": "RPiAutoUpdate_application.py",
+            "Operation": "Delete",
+            "Hash": ""
+        }
+    ]
 }
