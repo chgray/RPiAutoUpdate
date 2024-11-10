@@ -20,6 +20,8 @@ try:
             print("ERROR: couldnt load toHash")
         else:
             print("Hash: %s" % (hash.Hash()))
+            os.remove("toHash")
+
     else:
         print("NOT WIFI DEVICE!!!! - EXITING")
         exit(1)
