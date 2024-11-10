@@ -180,10 +180,10 @@ class ChecksumContent(object):
 
 class RPiAutoUpdateFileDownloader(object):
     def __init__(self):
-        print("   FILE: OpenRPiAutoUpdate Downloader Initialized")
+        print("   FILE: RPiAutoUpdate Downloader Initialized")
 
     def LoadFile(self, location):
-        #print("Getting %s from FILESYSTEM" % location)
+        print("Getting %s from FILESYSTEM" % location)
 
         if fileExists(location) == False:
             return None
@@ -205,14 +205,19 @@ class RPiAutoUpdateFileDownloader(object):
 class RPiAutoUpdateFileDownloaderWifi(RPiAutoUpdateFileDownloader):
     def __init__(self):
         super().__init__()
-        print("   WIFI: OpenRPiAutoUpdate Downloader Initialized")
+        print("   WIFI: RPiAutoUpdate Downloader Initializing")
 
+
+    def InitWifi(self):
+        print("   WIFI: RPiAutoUpdate Downloader Initializing Wifi")
         self.wlan = network.WLAN(network.STA_IF)
         self.wlan.active(False)
 
         fixedLed.value(1)
         sleep(1)
         fixedLed.value(0)
+        print("   WIFI: RPiAutoUpdate Downloader Initialized Wifi")
+
 
     def Connect(self):
         creds = WifiCreds()
@@ -251,41 +256,3 @@ class RPiAutoUpdateFileDownloaderWifi(RPiAutoUpdateFileDownloader):
         ret = ChecksumContent(response.text)
         return ret
 
-
-
-#
-# On PicoW init wifi
-#
-try:
-    if hasattr(network, "WLAN"):
-        print("WIFI")
-        downloader = RPiAutoUpdateFileDownloaderWifi()
-        downloader.Connect()
-    else:
-        print("NOT WIFI DEVICE!!!! - EXITING")
-        exit(1)
-
-    cu = RPiAutoUpdateUpdater(downloader)
-    cu.Update()
-
-except OSError as e:
-        print('Closing Up...')
-        print("OSERROR() - reseting!")
-        #machine.reset()
-
-except KeyboardInterrupt as e:
-    print('Keyboard-Closing Up...')
-    print("KEYBOARDINTERRUPT() - reseting!")
-    #machine.reset()
-
-except Exception as e:
-    print('Closing Up...')
-    print("EXCEPTION() - reseting!")
-    machine.reset()
-
-
-print("Loading Main Program")
-from RPiAutoUpdate_main import *
-updatedMain = RPiAutoUpdate_main()
-print("Loading Main Program")
-updatedMain.Main()
