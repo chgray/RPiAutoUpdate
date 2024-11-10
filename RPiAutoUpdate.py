@@ -42,7 +42,7 @@ def fileExists(path):
 class RPiAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
-        print("   UPDATER: RPiAutoUpdate Updater Version 3.2")
+        print("   UPDATER: RPiAutoUpdate Updater Version 3.3")
         self.downloader = downloader
 
     def Update(self):
@@ -86,11 +86,14 @@ class RPiAutoUpdateUpdater(object):
                         continue
 
                     if localFile.Hash() != value["Hash"]:
-                        print("    * File (%s) DOES EXIST locally, but hashs differ (remote=%s, local=%s)" % (value["FileName"], value["Hash"], localFile.Hash()))
+                        print("    * File (%s) DOES EXIST locally, but hashs differ" % (value["FileName"]))
+                        print("             (remote=%s)" % (value["Hash"]))
+                        print("             (local=%s)" % (localFile.Hash()))
                         needUpdate = True
                     else:
-                        print("    * File (%s) DOES EXIST locally, hashs the same (remote=%s, local=%s) - no update required)" % (value["FileName"], value["Hash"], localFile.Hash()))
-
+                        print("    * File (%s) DOES EXIST locally, hashs the same - no update required)" % (value["FileName"]))
+                        print("             (remote=%s)" % (value["Hash"]))
+                        print("             (local=%s)" % (localFile.Hash()))
 
                 #
                 # If we need to update, download the file and write it to the filesystem
