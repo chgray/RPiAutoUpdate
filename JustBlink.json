@@ -4,15 +4,15 @@
     "Files": [
         {
             "URL": "https://raw.githubusercontent.com/chgray/RPiAutoUpdate/refs/heads/user/chgray/iterating/RPiAutoUpdate.py",
-            "FileName": "RPiAutoUpdate.py.x",
+            "FileName": "RPiAutoUpdate.py",
             "Update": "Update",
-            "Hash": "ec3edac681ca515f0b5c3636f579aaf22f86a84b498702b742699c5117420b45"
+            "Hash": "9b3cc0d863c4f39b9ffc20409004febc174b932496c9bf46379e6b04b5c97be5"
         },
         {
             "URL": "https://raw.githubusercontent.com/chgray/RPiAutoUpdate/refs/heads/user/chgray/iterating/JustBlink.py",
-            "FileName": "RPiAutoUpdate_application.py.x",
-            "Operation": "Delete",
-            "Hash": ""
+            "FileName": "RPiAutoUpdate_application.py",
+            "Operation": "Update",
+            "Hash": "98120c4556066e60d27273c74e56522e8883de838f17646028960329b867f88e"
         }
     ]
 }
