@@ -107,14 +107,14 @@ class RPiAutoUpdateUpdater(object):
                 needUpdate = False
 
                 if localFile == None:
-                    print("    * File (%s) DOES NOT EXIST in local filesystem;  forcing update" % localFile)
+                    print("    * File (%s) DOES NOT EXIST in local filesystem;  forcing update" % value["FileName"])
                     needUpdate = True
                 else:
                     if localFile.Hash() != value["Hash"]:
-                        print("    * File (%s) DOES EXIST locally, but hashs differ (remote=%s, local=%s)" % (localFile, value["Hash"], localFile.Hash()))
+                        print("    * File (%s) DOES EXIST locally, but hashs differ (remote=%s, local=%s)" % (value["FileName"], value["Hash"], localFile.Hash()))
                         needUpdate = True
                     else:
-                        print("    * File (%s) DOES EXIST locally, hashs the same - no update required)" % (localFile))
+                        print("    * File (%s) DOES EXIST locally, hashs the same (remote=%s, local=%s) - no update required)" % (value["FileName"], value["Hash"], localFile.Hash()))
 
 
                 #
