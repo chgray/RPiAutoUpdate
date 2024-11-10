@@ -20,18 +20,11 @@ from machine import Pin
 
 
 fixedLed = Pin("LED", Pin.OUT)
-#wdt = WDT(timeout=8000) #timeout is in ms
-timer = Timer()
 
 fixedLed.value(1)
 sleep(1)
 fixedLed.value(0)
 
-
-
-def callback(data):
-    print("INTERRUPT")
-    print(data)
 
 startTime = time.ticks_ms()
 
@@ -42,34 +35,6 @@ def fileExists(path):
     except OSError:
         return False
 
-def pokeWatchDog():
-    fixedLed.toggle()
-    #global wdt
-    #global fixedLed
-    #global startTime
-
-    #if startTime + (6 * 60 *  1000) < time.ticks_ms():
-    #    print("RESETING")
-    #    machine.reset()
-
-    #led = Pin("LED", Pin.OUT)
-    #fixedLed.value(0)
-    #sleep(1)
-    #print("WatchDog Poke")
-    #fixedLed.value(1)
-    #wdt.feed() #resets countdown
-    #fixedLed.toggle()
-
-def pokeWatchDogTimer(t):
-    #print("Watchdog Timer")
-    #fixedLed.toggle()
-    pokeWatchDog()
-
-
-#print("Initing Timer")
-#timer.init(mode=Timer.PERIODIC, period=200, callback=pokeWatchDogTimer)
-#print("...timer inited")
-
 
 #
 # Read update file
@@ -77,7 +42,7 @@ def pokeWatchDogTimer(t):
 class RPiAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
-        print("   UPDATER: RPiAutoUpdate Updater Version 2.0")
+        print("   UPDATER: RPiAutoUpdate Updater Version 3.0")
         self.downloader = downloader
 
     def Update(self):
@@ -114,6 +79,12 @@ class RPiAutoUpdateUpdater(object):
                     print("    * File (%s) DOES NOT EXIST in local filesystem;  forcing update" % value["FileName"])
                     needUpdate = True
                 else:
+
+                    if value["Operation"] == "Delete":
+                        print("    * File (%s) marked for deletion" % value["FileName"])
+                        os.remove(value["FileName"])
+                        continue
+
                     if localFile.Hash() != value["Hash"]:
                         print("    * File (%s) DOES EXIST locally, but hashs differ (remote=%s, local=%s)" % (value["FileName"], value["Hash"], localFile.Hash()))
                         needUpdate = True
