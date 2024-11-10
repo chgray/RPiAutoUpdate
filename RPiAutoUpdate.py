@@ -77,6 +77,7 @@ def pokeWatchDogTimer(t):
 class RPiAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
+        print("   UPDATER: RPiAutoUpdate Updater Version 1.0")
         self.downloader = downloader
 
     def Update(self):

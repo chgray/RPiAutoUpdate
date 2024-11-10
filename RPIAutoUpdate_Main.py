@@ -1,7 +1,10 @@
 from RPiAutoUpdate import *
 # https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#drag-and-drop-micropython
 
-print("Hello World")
+print("Usage:")
+print("   1. follow instructions for wifi credentials and default configuration")
+print("   2. copy this file as main.py' -- eg: ampy put RPiAutoUpdate_Main.py main.py")
+
 
 #
 # On PicoW init wifi
@@ -10,6 +13,9 @@ try:
     if hasattr(network, "WLAN"):
         print("WIFI")
         downloader = RPiAutoUpdateFileDownloaderWifi()
+        print("Initing WiFi")
+        downloader.InitWifi()
+        print("Connecting WiFi")
         downloader.Connect()
     else:
         print("NOT WIFI DEVICE!!!! - EXITING")
