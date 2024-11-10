@@ -122,7 +122,7 @@ class RPiAutoUpdateUpdater(object):
                     if content.Hash() == value["Hash"]:
                         print ("    * FILE HASH IS CORRECT!")
                     else:
-                        print ("    * CORRUPTED FILE HASH actual=%s vs. expected=%s" % (content.Hash(), value["Hash"]))
+                        print ("    * CORRUPTED FILE HASH expected=%s vs. actual=%s" % (content.Hash(), value["Hash"]))
                         needUpdate = False
 
                 if needUpdate:
