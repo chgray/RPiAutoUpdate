@@ -42,7 +42,7 @@ def fileExists(path):
 class RPiAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
-        print("   UPDATER: RPiAutoUpdate Updater Version 3.1")
+        print("   UPDATER: RPiAutoUpdate Updater Version 3.2")
         self.downloader = downloader
 
     def Update(self):
@@ -70,7 +70,7 @@ class RPiAutoUpdateUpdater(object):
         print("")
         print("Updating Files: -------------------------------------------------")
         for key, value in enumerate(targetConfigJson['Files']):
-            print ("    Checking %s for updates" % value["FileName"])
+            print ("Updating %s ****************************************************" % value["FileName"])
             try:
                 localFile = self.downloader.LoadFile(value["FileName"])
                 needUpdate = False
@@ -104,7 +104,7 @@ class RPiAutoUpdateUpdater(object):
                     if content.Hash() == value["Hash"]:
                         print ("    * FILE HASH IS CORRECT!")
                     else:
-                        print ("    * CORRUPTED FILE HASH expected=%s vs. actual=%s" % (content.Hash(), value["Hash"]))
+                        print ("    * CORRUPTED FILE HASH actual=%s vs. expected=%s" % (content.Hash(), value["Hash"]))
                         needUpdate = False
 
                 #
