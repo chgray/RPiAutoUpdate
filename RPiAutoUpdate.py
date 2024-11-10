@@ -42,7 +42,7 @@ def fileExists(path):
 class RPiAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
-        print("   UPDATER: RPiAutoUpdate Updater Version 3.4")
+        print("   UPDATER: RPiAutoUpdate Updater Version 3.5")
         self.downloader = downloader
 
     def Update(self):

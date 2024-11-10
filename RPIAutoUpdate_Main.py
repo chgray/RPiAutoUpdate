@@ -1,6 +1,8 @@
 from RPiAutoUpdate import *
 # https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#drag-and-drop-micropython
 
+print("Version: 0.1")
+print("")
 print("Usage:")
 print("   0. to get to python() flash RPI_PICO_W-20241025-v1.24.0.uf2 - it wont erase files but will go to python")
 print("   1. follow instructions for wifi credentials and default configuration")
