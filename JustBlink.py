@@ -19,5 +19,5 @@ class RPiAutoUpdate_application:
         timer.init(freq=10, mode=Timer.PERIODIC, callback=blink)
 
         print("bye")
-        sleep(20)
-        print("done")
+        sleep(5)
+        print("exiting;  use ampy now")
