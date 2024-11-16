@@ -2,7 +2,7 @@ from machine import Pin, Timer
 from time import sleep
 
 
-class RPiAutoUpdate_application:
+class RPIAutoUpdate_application:
 
     def __init__(self):
         print("JustBlink Initing! Version 0")

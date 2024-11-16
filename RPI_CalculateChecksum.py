@@ -1,10 +1,10 @@
-from RPiAutoUpdate import *
+from RPIAutoUpdate import *
 # https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#drag-and-drop-micropython
 
 print("Usage:")
 print("   1. run this tool - it'll tell you what the hashs for all files in storage")
 
-downloader = RPiAutoUpdateFileDownloaderWifi()
+downloader = RPIAutoUpdateFileDownloaderWifi()
 
 print("")
 print("")

@@ -1,4 +1,4 @@
-from RPiAutoUpdate import *
+from RPIAutoUpdate import *
 from WifiCreds import *
 # https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#drag-and-drop-micropython
 
@@ -7,7 +7,7 @@ print("")
 print("Usage:")
 print("   0. to get to python() flash RPI_PICO_W-20241025-v1.24.0.uf2 - it wont erase files but will go to python")
 print("   1. follow instructions for wifi credentials and default configuration")
-print("   2. copy this file as main.py' -- eg: ampy put RPiAutoUpdate_Main.py main.py")
+print("   2. copy this file as main.py' -- eg: ampy put RPIAutoUpdate_Main.py main.py")
 
 creds = WifiCreds()
 
@@ -19,7 +19,7 @@ if False == creds.Do_Not_Use_Network():
     try:
         if hasattr(network, "WLAN"):
             print("WIFI")
-            downloader = RPiAutoUpdateFileDownloaderWifi()
+            downloader = RPIAutoUpdateFileDownloaderWifi()
             print("Initing WiFi")
             downloader.InitWifi()
             print("Connecting WiFi")
@@ -28,7 +28,7 @@ if False == creds.Do_Not_Use_Network():
             print("NOT WIFI DEVICE!!!! - EXITING")
             exit(1)
 
-        cu = RPiAutoUpdateUpdater(downloader)
+        cu = RPIAutoUpdateUpdater(downloader)
         cu.Update()
 
     except OSError as e:
@@ -48,7 +48,7 @@ if False == creds.Do_Not_Use_Network():
 
 
 print("Loading Main Program")
-from RPiAutoUpdate_application import *
-updatedMain = RPiAutoUpdate_application()
+from RPIAutoUpdate_application import *
+updatedMain = RPIAutoUpdate_application()
 print("Loading Main Program")
 updatedMain.Main()

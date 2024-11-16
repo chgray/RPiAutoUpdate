@@ -39,7 +39,7 @@ def fileExists(path):
 #
 # Read update file
 #
-class RPiAutoUpdateUpdater(object):
+class RPIAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
         print("   UPDATER: RPiAutoUpdate Updater Version 3.5")
@@ -159,7 +159,7 @@ class ChecksumContent(object):
     def Hash(self):
         return self.hexHash
 
-class RPiAutoUpdateFileDownloader(object):
+class RPIAutoUpdateFileDownloader(object):
     def __init__(self):
         print("   FILE: RPiAutoUpdate Downloader Initialized")
 
@@ -181,7 +181,7 @@ class RPiAutoUpdateFileDownloader(object):
             ret = ChecksumContent(f.read())
             return ret
 
-class RPiAutoUpdateFileDownloaderWifi(RPiAutoUpdateFileDownloader):
+class RPIAutoUpdateFileDownloaderWifi(RPIAutoUpdateFileDownloader):
     def __init__(self):
         super().__init__()
         print("   WIFI: RPiAutoUpdate Downloader Initializing")
