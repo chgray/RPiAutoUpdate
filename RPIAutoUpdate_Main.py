@@ -2,7 +2,7 @@ from RPIAutoUpdate import *
 from WifiCreds import *
 # https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#drag-and-drop-micropython
 
-print("Version: 0.1")
+print("Version: 0.2")
 print("")
 print("Usage:")
 print("To get to python() flash RPI_PICO_W-20241025-v1.24.0.uf2 - it wont erase files but will go to python")
@@ -39,6 +39,11 @@ if True == creds.UpdateOnBoot() or cu.IsUpdateRequested():
             exit(1)
 
         cu.Update()
+
+        if True == cu.IsUpdateReady():
+            print("REBOOTING! - update is ready")
+            sleep(3)
+            machine.reset()
 
     except OSError as e:
             print('Closing Up...')

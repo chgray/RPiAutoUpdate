@@ -225,10 +225,10 @@ class RPIAutoUpdateUpdater(object):
                     print("    * SUCCESS: %s updated staged" % value["FileName"])
 
                     # Help the GC out a little; to prevent OOMs (which are happening)
-                    print (f"Clearing Downloaded File  before={gc.mem_free()}")
+                    print ("    * Clearing Downloaded File  memory before={gc.mem_free()}")
                     del content
                     gc.collect()
-                    print (f"    after={gc.mem_free()}")
+                    print (f"    *  Memory After={gc.mem_free()}")
 
 
             except OSError as e:
