@@ -5,7 +5,7 @@ class WifiCreds:
     def __init__(self):
         print("Opened WiFi Credential file from local filesystem")
 
-    def Do_Not_Use_Network(self):
+    def UpdateOnBoot(self):
         return True
 
     def DeviceFunction(self):

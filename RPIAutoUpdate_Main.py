@@ -5,21 +5,31 @@ from WifiCreds import *
 print("Version: 0.1")
 print("")
 print("Usage:")
-print("   0. to get to python() flash RPI_PICO_W-20241025-v1.24.0.uf2 - it wont erase files but will go to python")
-print("   1. follow instructions for wifi credentials and default configuration")
-print("   2. copy this file as main.py' -- eg: ampy put RPIAutoUpdate_Main.py main.py")
+print("To get to python() flash RPI_PICO_W-20241025-v1.24.0.uf2 - it wont erase files but will go to python")
+
 
 creds = WifiCreds()
 
-print("Creds %d" % creds.Do_Not_Use_Network())
+# Create (but dont init) uploaders
+downloader = RPIAutoUpdateFileDownloaderWifi()
+cu = RPIAutoUpdateUpdater(downloader)
+
+#
+# Print useful update configurations
+#
+print("")
+print("")
+print("          UPDATE_ON_BOOT=%d" % creds.UpdateOnBoot())
+print("     UPDATE_IS_REQUESTED=%d" % cu.IsUpdateRequested())
+print("UPDATE_REQUESTED_ON_DISK=%d" % cu.IsUpdateReady())
+
 #
 # On PicoW init wifi
 #
-if False == creds.Do_Not_Use_Network():
+if True == creds.UpdateOnBoot() or cu.IsUpdateRequested():
+    print("Doing Update over WiFi")
     try:
         if hasattr(network, "WLAN"):
-            print("WIFI")
-            downloader = RPIAutoUpdateFileDownloaderWifi()
             print("Initing WiFi")
             downloader.InitWifi()
             print("Connecting WiFi")
@@ -28,7 +38,6 @@ if False == creds.Do_Not_Use_Network():
             print("NOT WIFI DEVICE!!!! - EXITING")
             exit(1)
 
-        cu = RPIAutoUpdateUpdater(downloader)
         cu.Update()
 
     except OSError as e:
@@ -46,6 +55,17 @@ if False == creds.Do_Not_Use_Network():
         print("EXCEPTION() - reseting!")
         machine.reset()
 
+
+if True == cu.IsUpdateReady():
+    cu.FinishUpdate()
+    print("REBOOTING! - update is ready")
+    sleep(3)
+    machine.reset()
+
+if True == cu.IsUpdateReady():
+    print("REBOOTING! - update is still requested")
+    sleep(3)
+    machine.reset()
 
 print("Loading Main Program")
 from RPIAutoUpdate_application import *
