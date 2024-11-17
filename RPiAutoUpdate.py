@@ -43,7 +43,7 @@ def fileExists(path):
 class RPIAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
-        print("   UPDATER: RPiAutoUpdate Updater Version 3.5")
+        print("   UPDATER: RPiAutoUpdate Updater Version 3.6")
         self.downloader = downloader
 
 
@@ -68,7 +68,7 @@ class RPIAutoUpdateUpdater(object):
         with open("update.isReady", "wb") as file:
             file.write("yes")
 
-    def ClearUpdateRequested(self):
+    def ClearUpdateReady(self):
         if self.IsUpdateReady():
             os.remove("update.isReady")
 
@@ -77,7 +77,7 @@ class RPIAutoUpdateUpdater(object):
 
     def FinishUpdate(self):
 
-        self.ClearUpdateRequested()
+        self.ClearUpdateReady()
 
         # Handle Delete request file
         try:
@@ -122,7 +122,7 @@ class RPIAutoUpdateUpdater(object):
         print("")
         print("")
 
-        print("Check to see if we've had a failed update")
+        print("Clear the request for update")
         self.ClearUpdateRequested()
 
         print("Downloading Defice Function Config : ----------------------------")

@@ -2,7 +2,7 @@ from RPIAutoUpdate import *
 from WifiCreds import *
 # https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#drag-and-drop-micropython
 
-print("Version: 0.2")
+print("Version: 0.3")
 print("")
 print("Usage:")
 print("To get to python() flash RPI_PICO_W-20241025-v1.24.0.uf2 - it wont erase files but will go to python")
@@ -21,7 +21,7 @@ print("")
 print("")
 print("          UPDATE_ON_BOOT=%d" % creds.UpdateOnBoot())
 print("     UPDATE_IS_REQUESTED=%d" % cu.IsUpdateRequested())
-print("UPDATE_REQUESTED_ON_DISK=%d" % cu.IsUpdateReady())
+print("         UPDATE_IS_READY=%d" % cu.IsUpdateReady())
 
 #
 # On PicoW init wifi
