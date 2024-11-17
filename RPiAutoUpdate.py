@@ -184,10 +184,10 @@ class RPIAutoUpdateUpdater(object):
 
 
                 # Help the GC out a little; to prevent OOMs (which are happening)
-                print (f"    * Clearing LocalFile  before={gc.mem_free()}")
+                print("    * Clearing LocalFile  before={gc.mem_free()}")
                 del localFile
                 gc.collect()
-                print (f"    * Memory after LocalFileClear={gc.mem_free()}")
+                print("    * Memory after LocalFileClear={gc.mem_free()}")
 
                 #
                 # If we need to update, download the file and write it to the filesystem
