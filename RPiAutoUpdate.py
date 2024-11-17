@@ -43,7 +43,7 @@ def fileExists(path):
 class RPIAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
-        print("   UPDATER: RPiAutoUpdate Updater Version 3.6")
+        print("   UPDATER: RPiAutoUpdate Updater Version 3.7")
         self.downloader = downloader
 
 
@@ -184,10 +184,10 @@ class RPIAutoUpdateUpdater(object):
 
 
                 # Help the GC out a little; to prevent OOMs (which are happening)
-                print (f"Clearing LocalFile  before={gc.mem_free()}")
+                print (f"    * Clearing LocalFile  before={gc.mem_free()}")
                 del localFile
                 gc.collect()
-                print (f"    after={gc.mem_free()}")
+                print (f"    * Memory after LocalFileClear={gc.mem_free()}")
 
                 #
                 # If we need to update, download the file and write it to the filesystem
