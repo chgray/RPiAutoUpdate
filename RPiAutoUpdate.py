@@ -43,7 +43,7 @@ def fileExists(path):
 class RPIAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
-        print("   UPDATER: RPiAutoUpdate Updater Version 3.7")
+        print("   UPDATER: RPiAutoUpdate Updater Version 3.8")
         self.downloader = downloader
 
 
@@ -175,19 +175,17 @@ class RPIAutoUpdateUpdater(object):
                     if localFile.Hash() != value["Hash"]:
                         print("    * File (%s) DOES EXIST locally, but hashs differ" % (value["FileName"]))
                         print("             (remote=%s)" % (value["Hash"]))
-                        print("             (local=%s)" % (localFile.Hash()))
+                        print("             ( local=%s)" % (localFile.Hash()))
                         needUpdate = True
                     else:
                         print("    * File (%s) DOES EXIST locally, hashs the same - no update required)" % (value["FileName"]))
                         print("             (remote=%s)" % (value["Hash"]))
-                        print("             (local=%s)" % (localFile.Hash()))
+                        print("             ( local=%s)" % (localFile.Hash()))
 
 
                 # Help the GC out a little; to prevent OOMs (which are happening)
-                print("    * Clearing LocalFile  before={gc.mem_free()}")
                 del localFile
                 gc.collect()
-                print("    * Memory after LocalFileClear={gc.mem_free()}")
 
                 #
                 # If we need to update, download the file and write it to the filesystem
@@ -199,9 +197,11 @@ class RPIAutoUpdateUpdater(object):
                     content = self.downloader.LoadContent(value["URL"])
 
                     if content.Hash() == value["Hash"]:
-                        print ("    * FILE HASH IS CORRECT!")
+                        print("    * FILE HASH IS CORRECT!")
                     else:
-                        print ("    * CORRUPTED FILE HASH actual=%s vs. expected=%s" % (content.Hash(), value["Hash"]))
+                        print("    * CORRUPTED FILE HASH - this means the remote file and remote config differ, or the file was corrupted in flight")
+                        print("             (downloaed=%s)" % (content.Hash()))
+                        print("             (  desired=%s)" % (value["Hash"]))
                         goodTransaction = False
                         needUpdate = False
 
@@ -333,7 +333,7 @@ class RPIAutoUpdateFileDownloaderWifi(RPIAutoUpdateFileDownloader):
             machine.reset()
 
     def LoadContent(self, location):
-        print("   WIFI: Downloading file %s" % location)
+        #print("   WIFI: Downloading file %s" % location)
         response = urequests.get(location)
         hash_object = hashlib.sha256(response.text)
         hex_dig = binascii.hexlify(hash_object.digest())
