@@ -43,7 +43,7 @@ def fileExists(path):
 class RPIAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
-        print("   UPDATER: RPiAutoUpdate Updater Version 0.3.0")
+        print("   UPDATER: RPiAutoUpdate Updater Version 0.3.1")
         self.downloader = downloader
 
 
@@ -240,13 +240,15 @@ class RPIAutoUpdateUpdater(object):
                 print("    * OSERROR() - update failed")
                 #machine.reset()
 
+        #
+        # Once enumerated all files, report final status
+        #
+        if goodTransaction:
+            print("    * GOOD: Update completed!")
+            self.SetUpdateIsReady()
 
-            if goodTransaction:
-                print("    * GOOD: Update completed!")
-                self.SetUpdateIsReady()
-
-            else:
-                print("    * ERROR: Update FAILED!")
+        else:
+            print("    * ERROR: Update FAILED!")
 
 
 
