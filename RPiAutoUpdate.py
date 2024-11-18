@@ -43,7 +43,7 @@ def fileExists(path):
 class RPIAutoUpdateUpdater(object):
 
     def __init__(self, downloader):
-        print("   UPDATER: RPiAutoUpdate Updater Version 3.8")
+        print("   UPDATER: RPiAutoUpdate Updater Version 0.3.0")
         self.downloader = downloader
 
 
@@ -151,7 +151,9 @@ class RPIAutoUpdateUpdater(object):
         print("Updating Files: -------------------------------------------------")
         goodTransaction = True
         for key, value in enumerate(targetConfigJson['Files']):
-            print ("Updating %s ****************************************************" % value["FileName"])
+
+            print("")
+            print("Updating %s ****************************************************" % value["FileName"])
             try:
                 localFile = self.downloader.LoadFile(value["FileName"])
                 needUpdate = False
@@ -202,6 +204,8 @@ class RPIAutoUpdateUpdater(object):
                         print("    * CORRUPTED FILE HASH - this means the remote file and remote config differ, or the file was corrupted in flight")
                         print("             (downloaed=%s)" % (content.Hash()))
                         print("             (  desired=%s)" % (value["Hash"]))
+
+                        print("File CONTENTS: %s" % content.Content())
                         goodTransaction = False
                         needUpdate = False
 
