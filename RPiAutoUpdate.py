@@ -233,16 +233,16 @@ class RPIAutoUpdateUpdater(object):
 
             except OSError as e:
                 goodTransaction = False
-                print("OSERROR() - update failed")
+                print("    * OSERROR() - update failed")
                 #machine.reset()
 
 
             if goodTransaction:
-                print("GOOD: Update completed!")
+                print("    * GOOD: Update completed!")
                 self.SetUpdateIsReady()
 
             else:
-                print("ERROR: Update FAILED!")
+                print("    * ERROR: Update FAILED!")
 
 
 
