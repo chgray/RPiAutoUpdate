@@ -8,6 +8,9 @@ class WifiCreds:
     def UpdateOnBoot(self):
         return True
 
+    def ConnectWifiForApp(self):
+        return False
+
     def DeviceFunction(self):
         return 'https://raw.githubusercontent.com/chgray/RPiAutoUpdate/refs/heads/user/chgray/iterating/JustBlink.json'
 

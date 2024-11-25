@@ -72,8 +72,17 @@ if True == cu.IsUpdateReady():
     sleep(3)
     machine.reset()
 
+
+if creds.ConnectWifiForApp():
+    downloader.InitWifi()
+    downloader.Connect()
+
+
 print("Loading Main Program")
 from RPIAutoUpdate_application import *
 updatedMain = RPIAutoUpdate_application()
 print("Loading Main Program")
 updatedMain.Main()
+
+
+print("...........We're exiting............")
